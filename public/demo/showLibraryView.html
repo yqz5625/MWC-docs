@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Web Capture - Hello World</title>
+    <script src="../dist/mwc.bundle.js"></script>
+  </head>
+
+  <body>
+    <!-- Taking only half of its screen -->
+    <div id="mwc" style="height: 100vh"></div>
+    <div id="customizedLibraryViewContent">Create Your First Document!</div>
+
+    <script>
+      // Instantiate a Mobile Web Capture Object
+      const mobileWebCapture = new Dynamsoft.MobileWebCapture({
+        license: 'DLS2eyJoYW5kc2hha2VDb2RlIjoiMzIyOTAxLVRYbFhaV0pRY205cSIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL21kbHMuZHluYW1zb2Z0b25saW5lLmNvbSIsIm9yZ2FuaXphdGlvbklEIjoiMzIyOTAxIiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vc2Rscy5keW5hbXNvZnRvbmxpbmUuY29tIiwiY2hlY2tDb2RlIjo0NzgzMDgxOH0=', // Replace this with your actual license key
+        container: document.getElementById('mwc'),
+        showLibraryView: true,
+        libraryViewConfig: {
+          emptyContentConfig: document.getElementById("customizedLibraryViewContent"),
+        },
+      })
+      ;(async () => {
+        // Launch the Mobile Web Capture Instance
+        const fileName = `New_Document_${Date.now().toString().slice(-5)}`
+        await mobileWebCapture.launch(fileName)
+      })()
+    </script>
+  </body>
+</html>
